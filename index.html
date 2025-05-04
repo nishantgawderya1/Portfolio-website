@@ -119,7 +119,6 @@
             .secondsection {
                 margin: auto;
                 max-width: 80vw;
-                justify-content: space-around;
                 margin: 80px 50px;
                 font-size: 2rem;
             }
@@ -131,14 +130,15 @@
                 display: contents;
             }
 
-            .leftsection1 {
+            .para {
                 width: 50%;
                 justify-content: space-around;
             }
 
-            .rightsection1 img {
-                width: 10%;
-                border-radius: 50%;
+            .bear img {
+                width: 200px;
+                /* border-radius: 50%; */
+                
             }
 
             
@@ -163,20 +163,20 @@
                 max-width: 80vw;
                 justify-content: center;
                 margin: 80px 50px;
-                font-size: 2rem;
+                font-size: 1.7rem;
             }
 
             .projects .box {
                 background: white;
-                width: 80vw;
+                width: 60vw;
                 height: 2px;
-                margin: 56px;
+                margin: 80px;
                 display: flex;
             }
 
             .projects .vertical {
                 background: whitesmoke;
-                width: 92vw;
+                width: 70vw;
                 height: 1px;
                 margin: 0, 100px;
             }
@@ -218,7 +218,10 @@
                 transition: transform 0.3s ease;
             }
 
-        
+            .tt{
+                display: flex;
+                justify-content: space-evenly;
+            }
 
             .account-item a:hover {
                 transform: translateY(-100px);
@@ -379,8 +382,8 @@
 
             /* Projects Section */
             .project-item {
-                margin-top: 20px;
-                font-size: 1.5rem;
+                margin-top: 15px;
+                font-size: 1rem;
             }
 
             .project-item a {
@@ -485,11 +488,11 @@
                         <button class="btn"><a href="https://drive.google.com/file/d/1JdWthksOPXuY5Te4byJ-8tvIhHvEKwWz/view?usp=drive_link">Visit Resume</a></button>
                     </div>
                     <br>
-                    <div><span class="sample">
+                    <div class = "leftsection2"><span class="sample">
                             <pre>< Defeating Bugs | One Line at a Time ></pre>
                         </span></div>
                 </div>
-                <div class="rightsection" >
+                <div class="rightsection2" >
                     <img class="meimage" src="me.jpg" alt="developer image" width="450">
                 </div>
             </section>
@@ -501,17 +504,17 @@
 
                     <br>
                     <br>
-                    <div class="leftsection1">
+                    <div class="tt"><div class="para">
                         <p>Hello! I am a passionate BTech Computer Science Engineering student with an enthusiasm for web
                             development and innovation. My journey in the tech world is driven by a relentless curiosity and
                             a desire to transform creative ideas into functional, digital realities.
                             <!-- content continues -->
                         </p>
                     </div>
-                    <br>
-                    <div class="rightsection1">
+                    
+                    <div class="bear">
                         <img src="img.png">
-                    </div>
+                    </div></div>
             </div>
             <hr>
             </section>
@@ -553,10 +556,7 @@
                 <div class="project-box">
                     <h3>To-Do List</h3>
                     <p>A simple and interactive To-Do List application built using HTML, CSS, and JavaScript.</p>
-                    <a href="https://nishantgawderya1.github.io/to-do-list/">View Project</a>
-                    <h3>Weather-Watch</h3>
-                    <p>Stay ahead of the elements with WeatherWatch, the comprehensive weather forecasting application designed to keep you informed and prepared for any weather condition.</p>
-                    <a href="https://nishantgawderya1.github.io/WeatherWatch/">View Project</a>
+                    <a href="https://github.com/nishantgawderya1/to-do-list" target="_blank" class="project-link">View Project</a>
                 </div>
             </div>
         </section>
