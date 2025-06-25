@@ -49,25 +49,6 @@ This repository contains the source code for my personal portfolio website. The 
 - **Styling**: Customize the CSS files to change the look and feel of the website.
 - **JavaScript**: Edit the JavaScript files to add or modify interactive elements.
 
-## Directory Structure
-
-```
-portfolio-website/
-├── css/
-│   ├── styles.css
-│   └── responsive.css
-├── js/
-│   └── script.js
-├── images/
-│   ├── project1.jpg
-│   ├── project2.jpg
-│   └── profile.jpg
-├── index.html
-├── about.html
-├── projects.html
-├── contact.html
-└── README.md
-```
 
 ## Contributing
 
