@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fraud Detection with Python</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: rgba(17,17,17,255);
+            color: #f1f1f1;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px;
+            background-color: rgba(30,30,31,255);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            margin-top: 40px;
+            margin-bottom: 40px;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        /* Header Styles */
+        header {
+            margin-bottom: 40px;
+            text-align: center;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(253,197,98,0.3);
+        }
+
+        h1 {
+            font-size: 2.3rem;
+            margin-bottom: 15px;
+            color: rgba(253,197,98,255);
+            text-shadow: 0 0 10px rgba(253,197,98,0.3);
+        }
+
+        .author-info {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .author-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid rgba(253,197,98,0.5);
+        }
+
+        .author-name {
+            font-size: 1rem;
+            color: #f1f1f1;
+        }
+
+        .publish-date {
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        .tags {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            background-color: rgba(253,197,98,0.1);
+            color: rgba(253,197,98,255);
+        }
+
+        /* Article Content */
+        .article-content {
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .article-content h2 {
+            margin-top: 30px;
+            margin-bottom: 15px;
+            color: rgba(253,197,98,255);
+            font-size: 1.8rem;
+        }
+
+        .article-content h3 {
+            margin-top: 25px;
+            margin-bottom: 10px;
+            font-size: 1.4rem;
+        }
+
+        .article-content p {
+            margin-bottom: 20px;
+            color: #ddd;
+        }
+
+        .article-content ul, .article-content ol {
+            margin-bottom: 20px;
+            padding-left: 30px;
+        }
+
+        .article-content li {
+            margin-bottom: 10px;
+        }
+
+        .code-block {
+            background-color: rgba(0,0,0,0.3);
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Consolas', monospace;
+            margin: 25px 0;
+            overflow-x: auto;
+        }
+
+        .image-container {
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            border-radius: 10px;
+            border: 1px solid rgba(253,197,98,0.2);
+        }
+
+        .image-caption {
+            font-size: 0.9rem;
+            margin-top: 10px;
+            color: #888;
+            font-style: italic;
+        }
+
+        .highlight {
+            background-color: rgba(253,197,98,0.1);
+            padding: 2px 5px;
+            border-radius: 3px;
+            color: rgba(253,197,98,255);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(253,197,98,0.3);
+        }
+
+        .footer-text {
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        /* Animation */
+        @keyframes glow {
+            0% { opacity: 0.8; }
+            50% { opacity: 1; }
+            100% { opacity: 0.8; }
+        }
+
+        .highlight-box {
+            background-color: rgba(253,197,98,0.05);
+            border-left: 4px solid rgba(253,197,98,0.5);
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 0 8px 8px 0;
+            animation: glow 3s ease-in-out infinite;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+                margin-top: 20px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Building a Fraud Detection System with Python</h1>
+            <div class="author-info">
+                <img src=".\assets\images\my-avatar.png" alt="Author" class="author-img">
+                <div>
+                    <div class="author-name">Nishant Gawderya</div>
+                    <div class="publish-date">Published on June 25, 2025 · 5 min read</div>
+                </div>
+            </div>
+            <div class="tags">
+                <span class="tag">Python</span>
+                <span class="tag">Machine Learning</span>
+                <span class="tag">Fraud Detection</span>
+                <span class="tag">Data Science</span>
+            </div>
+        </header>
+
+        <article class="article-content">
+            <p>Fraud detection is a critical challenge across industries from banking to e-commerce. Modern fraudsters employ sophisticated techniques, making manual detection impractical at scale. In this article, we'll explore how to build an effective fraud detection system using Python and machine learning.</p>
+
+            <div class="highlight-box">
+                <p>Key insight: Effective fraud detection balances precision (correctly identifying fraud) with recall (catching all fraud attempts) while minimizing false positives that frustrate legitimate users.</p>
+            </div>
+
+            <h2>Understanding the Challenge</h2>
+            <p>Fraud detection systems face unique challenges:</p>
+            <ul>
+                <li><span class="highlight">Imbalanced data:</span> Genuine transactions vastly outnumber fraudulent ones</li>
+                <li><span class="highlight">Evolving tactics:</span> Fraud patterns change constantly</li>
+                <li><span class="highlight">Real-time requirements:</span> Decisions must often be made in milliseconds</li>
+            </ul>
+
+            <div class="image-container">
+                <img src="assets/images/Screenshot 2025-06-23 094402.png" alt="Fraud detection process flow">
+                
+            </div>
+
+            <h2>Data Preparation</h2>
+            <p>We'll use a synthetic dataset simulating credit card transactions. Real-world fraud detection would use domain-specific data.</p>
+
+            <div class="code-block">
+                <pre><code>import pandas as pd
+from sklearn.model_selection import train_test_split
+
+# Load dataset
+transactions = pd.read_csv('creditcard_transactions.csv')
+
+# Check class distribution
+print(transactions['Class'].value_counts(normalize=True))
+
+# Split into features and target
+X = transactions.drop('Class', axis=1)
+y = transactions['Class']
+
+# Split into training and test sets
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42, stratify=y
+)</code></pre>
+            </div>
+
+            <h2>Feature Engineering</h2>
+            <p>Good features are crucial for detection accuracy. We'll create:</p>
+            <ul>
+                <li>Time-based features (hour of day, day of week)</li>
+                <li>Statistical aggregates (rolling averages, z-scores)</li>
+                <li>Behavioral patterns (transaction frequency)</li>
+            </ul>
+
+            <h2>Model Selection</h2>
+            <p>We'll evaluate several algorithms:</p>
+
+            <div class="code-block">
+                <pre><code>from sklearn.ensemble import RandomForestClassifier, IsolationForest
+from sklearn.linear_model import LogisticRegression
+from xgboost import XGBClassifier
+from sklearn.metrics import classification_report, roc_auc_score
+
+# Initialize models
+models = {
+    "Logistic Regression": LogisticRegression(max_iter=1000),
+    "Random Forest": RandomForestClassifier(n_estimators=100),
+    "XGBoost": XGBClassifier(),
+    "Isolation Forest": IsolationForest(contamination=0.01)
+}
+
+# Evaluate each model
+for name, model in models.items():
+    model.fit(X_train, y_train)
+    preds = model.predict(X_test)
+    print(f"\n{name} Performance:")
+    print(classification_report(y_test, preds))
+    print(f"ROC AUC: {roc_auc_score(y_test, preds):.4f}")</code></pre>
+            </div>
+
+            <h2>Handling Imbalanced Data</h2>
+            <p>We'll use SMOTE (Synthetic Minority Oversampling Technique) to balance our dataset:</p>
+
+            <div class="code-block">
+                <pre><code>from imblearn.over_sampling import SMOTE
+
+sm = SMOTE(random_state=42)
+X_res, y_res = sm.fit_resample(X_train, y_train)</code></pre>
+            </div>
+
+            <h2>Deployment Considerations</h2>
+            <p>For production systems, consider:</p>
+            <ol>
+                <li>Model explainability (SHAP, LIME)</li>
+                <li>Continuous retraining pipelines</li>
+                <li>Real-time feature calculation</li>
+                <li>Fallback mechanisms for model failure</li>
+            </ol>
+
+            <div class="highlight-box">
+                <p>Pro tip: Combine machine learning with rules-based systems for defense-in-depth. Rules can catch known patterns while ML adapts to new fraud tactics.</p>
+            </div>
+
+            <h2>Conclusion</h2>
+            <p>Python's rich ecosystem makes it ideal for developing fraud detection systems. By combining proper data handling, thoughtful feature engineering, and appropriate model selection, we can build systems that detect fraud with high accuracy while maintaining good user experience.</p>
+        </article>
+
+    </div>
+</body>
+</html>
