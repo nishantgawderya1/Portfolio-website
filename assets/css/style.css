@@ -152,6 +152,10 @@ main { margin: 15px 12px; margin-bottom: 75px; min-width: 259px; position: relat
 .about-text { color: #c0cdd8; font-size: 14px; font-weight: 300; line-height: 1.8; }
 .about-text p { margin-bottom: 15px; }
 .about-text strong { color: var(--accent); font-weight: 500; }
+.resume-btn-wrap { margin: 1.5rem 0 0.5rem; }
+.download-resume-btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.7rem 1.6rem; background: var(--accent); color: #fff; font-family: var(--ff-heading); font-size: 0.9rem; font-weight: 600; border: none; border-radius: 8px; text-decoration: none; cursor: pointer; transition: background 0.25s ease, transform 0.2s ease; }
+.download-resume-btn:hover { background: var(--accent2); transform: translateY(-2px); }
+.download-resume-btn ion-icon { font-size: 1.15rem; }
 .hero-badges { display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 1.5rem 0; }
 .hero-tagline { font-family: var(--ff-heading); font-size: clamp(0.85rem, 2.5vw, 1.3rem); font-weight: 600; color: var(--accent2); margin-bottom: 1rem; letter-spacing: 0.01em; line-height: 1.4; }
 
@@ -321,6 +325,7 @@ textarea.form-input::-webkit-resizer { display: none; }
 /* ANIMATIONS */
 .about.active .hero-tagline { animation: fadeUp 0.7s ease both; animation-delay: 0s; }
 .about.active .about-text { animation: fadeUp 0.7s ease both; animation-delay: 0.1s; }
+.about.active .resume-btn-wrap { animation: fadeUp 0.7s ease both; animation-delay: 0.15s; }
 .about.active .hero-badges { animation: fadeUp 0.7s ease both; animation-delay: 0.2s; }
 .about.active .stats-strip { animation: fadeUp 0.7s ease both; animation-delay: 0.3s; }
 .about.active .service { animation: fadeUp 0.7s ease both; animation-delay: 0.4s; }
