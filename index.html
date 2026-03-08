@@ -638,12 +638,12 @@
           <ul class="project-list">
 
             <li class="project-item active" data-filter-item data-category="artificial intelligence">
-              <a href="#">
+              <a href="ReVive.html">
                 <figure class="project-img">
                   <div class="project-item-icon-box">
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
-                  <img src="./assets/images/revive-thumb.png" alt="ReVive project" loading="lazy">
+                  <img src="./assets/images/image.png" alt="ReVive project" loading="lazy">
                 </figure>
                 <h3 class="project-title">ReVive &mdash; AI Physiotherapy Assistant</h3>
                 <p class="project-category">Computer Vision &middot; Healthcare AI &middot; Pre-Incubated @ IIT Delhi</p>
@@ -769,6 +769,35 @@
   <script src="./assets/js/script.js"></script>
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+  <!-- Vanta.js 3D NET background -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var aboutEl = document.querySelector("[data-page='about']");
+      if (aboutEl && window.VANTA) {
+        VANTA.NET({
+          el: aboutEl,
+          mouseControls: true,
+          touchControls: true,
+          gyroControls: false,
+          minHeight: 200.00,
+          minWidth: 200.00,
+          scale: 1.00,
+          scaleMobile: 1.00,
+          color: 0x3fb8d4,
+          backgroundColor: 0x0d1117,
+          points: 8.00,
+          maxDistance: 23.00,
+          spacing: 18.00,
+          showDots: true
+        });
+        var canvas = aboutEl.querySelector('canvas');
+        if (canvas) canvas.style.opacity = '0.45';
+      }
+    });
+  </script>
 
 </body>
 

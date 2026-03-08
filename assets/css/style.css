@@ -146,6 +146,8 @@ main { margin: 15px 12px; margin-bottom: 75px; min-width: 259px; position: relat
 .navbar-link.active { color: var(--accent); }
 
 /* ABOUT */
+.about { position: relative; overflow: hidden; }
+.about > * { position: relative; z-index: 1; }
 .about .article-title { margin-bottom: 15px; }
 .about-text { color: #c0cdd8; font-size: 14px; font-weight: 300; line-height: 1.8; }
 .about-text p { margin-bottom: 15px; }

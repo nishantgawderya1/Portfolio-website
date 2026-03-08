@@ -4,47 +4,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fraud Detection with Python</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
-        /* Global Styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'DM Sans', sans-serif;
         }
 
         body {
-            background-color: rgba(17,17,17,255);
-            color: #f1f1f1;
+            background-color: #080c10;
+            color: #e8edf3;
             line-height: 1.6;
             padding: 20px;
+        }
+
+        body::before {
+            content: '';
+            position: fixed; inset: 0;
+            background-image:
+                linear-gradient(rgba(0,212,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,212,255,0.03) 1px, transparent 1px);
+            background-size: 48px 48px;
+            pointer-events: none; z-index: 0;
         }
 
         .container {
             max-width: 900px;
             margin: 0 auto;
             padding: 40px;
-            background-color: rgba(30,30,31,255);
-            border-radius: 20px;
+            background-color: #0d1117;
+            border-radius: 16px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             margin-top: 40px;
             margin-bottom: 40px;
-            border: 1px solid rgba(255,255,255,0.05);
+            border: 1px solid #1e2a38;
+            position: relative;
+            z-index: 1;
         }
 
-        /* Header Styles */
         header {
             margin-bottom: 40px;
             text-align: center;
             padding-bottom: 20px;
-            border-bottom: 1px solid rgba(253,197,98,0.3);
+            border-bottom: 1px solid rgba(0,212,255,0.15);
         }
 
         h1 {
             font-size: 2.3rem;
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
             margin-bottom: 15px;
-            color: rgba(253,197,98,255);
-            text-shadow: 0 0 10px rgba(253,197,98,0.3);
+            background: linear-gradient(to right, #00d4ff, #7b61ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
 
         .author-info {
@@ -60,17 +77,18 @@
             height: 50px;
             border-radius: 50%;
             object-fit: cover;
-            border: 2px solid rgba(253,197,98,0.5);
+            border: 2px solid rgba(0,212,255,0.3);
         }
 
         .author-name {
             font-size: 1rem;
-            color: #f1f1f1;
+            color: #e8edf3;
         }
 
         .publish-date {
-            font-size: 0.9rem;
-            color: #888;
+            font-size: 0.85rem;
+            font-family: 'Space Mono', monospace;
+            color: #6b7f95;
         }
 
         .tags {
@@ -82,35 +100,42 @@
 
         .tag {
             display: inline-block;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            background-color: rgba(253,197,98,0.1);
-            color: rgba(253,197,98,255);
+            padding: 4px 14px;
+            border-radius: 6px;
+            font-size: 0.72rem;
+            font-family: 'Space Mono', monospace;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            background-color: rgba(0,212,255,0.08);
+            color: #00d4ff;
+            border: 1px solid rgba(0,212,255,0.2);
         }
 
-        /* Article Content */
         .article-content {
             line-height: 1.8;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
         }
 
         .article-content h2 {
             margin-top: 30px;
             margin-bottom: 15px;
-            color: rgba(253,197,98,255);
-            font-size: 1.8rem;
+            color: #00d4ff;
+            font-family: 'Syne', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 700;
         }
 
         .article-content h3 {
             margin-top: 25px;
             margin-bottom: 10px;
-            font-size: 1.4rem;
+            font-size: 1.3rem;
+            font-family: 'Syne', sans-serif;
+            color: #e8edf3;
         }
 
         .article-content p {
             margin-bottom: 20px;
-            color: #ddd;
+            color: #b8c8d8;
         }
 
         .article-content ul, .article-content ol {
@@ -120,15 +145,19 @@
 
         .article-content li {
             margin-bottom: 10px;
+            color: #b8c8d8;
         }
 
         .code-block {
-            background-color: rgba(0,0,0,0.3);
+            background-color: #0f1923;
             padding: 20px;
-            border-radius: 8px;
-            font-family: 'Consolas', monospace;
+            border-radius: 10px;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.82rem;
             margin: 25px 0;
             overflow-x: auto;
+            border: 1px solid #1e2a38;
+            color: #e8edf3;
         }
 
         .image-container {
@@ -138,38 +167,37 @@
 
         .image-container img {
             max-width: 100%;
-            border-radius: 10px;
-            border: 1px solid rgba(253,197,98,0.2);
+            border-radius: 12px;
+            border: 1px solid #1e2a38;
         }
 
         .image-caption {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
+            font-family: 'Space Mono', monospace;
             margin-top: 10px;
-            color: #888;
+            color: #6b7f95;
             font-style: italic;
         }
 
         .highlight {
-            background-color: rgba(253,197,98,0.1);
-            padding: 2px 5px;
-            border-radius: 3px;
-            color: rgba(253,197,98,255);
+            background-color: rgba(0,212,255,0.08);
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: #00d4ff;
         }
 
-        /* Footer */
         footer {
             text-align: center;
             margin-top: 50px;
             padding-top: 30px;
-            border-top: 1px solid rgba(253,197,98,0.3);
+            border-top: 1px solid #1e2a38;
         }
 
         .footer-text {
-            color: #777;
+            color: #6b7f95;
             font-size: 0.9rem;
         }
 
-        /* Animation */
         @keyframes glow {
             0% { opacity: 0.8; }
             50% { opacity: 1; }
@@ -177,15 +205,18 @@
         }
 
         .highlight-box {
-            background-color: rgba(253,197,98,0.05);
-            border-left: 4px solid rgba(253,197,98,0.5);
+            background-color: rgba(0,212,255,0.04);
+            border-left: 4px solid rgba(0,212,255,0.4);
             padding: 20px;
             margin: 30px 0;
-            border-radius: 0 8px 8px 0;
+            border-radius: 0 10px 10px 0;
             animation: glow 3s ease-in-out infinite;
         }
 
-        /* Responsive */
+        .highlight-box p {
+            color: #b8c8d8;
+        }
+
         @media (max-width: 768px) {
             .container {
                 padding: 20px;
