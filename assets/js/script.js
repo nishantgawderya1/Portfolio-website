@@ -158,29 +158,3 @@ for (let i = 0; i < navigationLinks.length; i++) {
   });
 }
 
-// Blog and Project Modal Functionality
-const blogProjectItems = document.querySelectorAll("[data-blog-project-item]");
-const blogProjectModal = document.querySelector("[data-modal-container]");
-const blogProjectCloseBtn = document.querySelector("[data-modal-close-btn]");
-const blogProjectOverlay = document.querySelector("[data-overlay]");
-const blogProjectTitle = document.querySelector("[data-modal-title]");
-const blogProjectText = document.querySelector("[data-modal-text]");
-
-const blogProjectModalFunc = function () {
-  blogProjectModal.classList.toggle("active");
-  blogProjectOverlay.classList.toggle("active");
-};
-
-// Add click event to all blog and project items
-for (let i = 0; i < blogProjectItems.length; i++) {
-  blogProjectItems[i].addEventListener("click", function () {
-    blogProjectTitle.innerHTML = this.querySelector("[data-blog-project-title]").innerHTML;
-    blogProjectText.innerHTML = this.querySelector("[data-blog-project-text]").innerHTML;
-
-    blogProjectModalFunc();
-  });
-}
-
-// Add click event to modal close button
-blogProjectCloseBtn.addEventListener("click", blogProjectModalFunc);
-blogProjectOverlay.addEventListener("click", blogProjectModalFunc);
