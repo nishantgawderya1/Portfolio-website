@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weld AI — Radiographic Weld Defect Detection System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'DM Sans', sans-serif; }
+
+        body {
+            background-color: #080c10;
+            color: #e8edf3;
+            min-height: 100vh;
+            display: flex; justify-content: center; align-items: center;
+            padding: 20px;
+        }
+
+        .portfolio-container { background: #0d1117; border: 1px solid #1e2a38; border-radius: 16px; width: 100%; max-width: 900px; padding: 40px; box-shadow: 0 25px 50px rgba(0,0,0,0.3); position: relative; overflow: hidden; }
+        .portfolio-header { text-align: center; margin-bottom: 30px; }
+        .portfolio-header h1 { font-size: 2.5rem; font-family: 'Syne', sans-serif; font-weight: 800; margin-bottom: 10px; background: linear-gradient(to right, #00d4ff, #7b61ff); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .portfolio-header p { color: #6b7f95; font-size: 1.1rem; }
+        .project-content { display:flex; flex-wrap:wrap; gap:30px; margin-bottom:30px; }
+        .project-gallery { flex:1; min-width:300px; display:flex; flex-direction:column; gap:15px; }
+        .main-image-container { border-radius:12px; overflow:hidden; box-shadow:0 10px 30px rgba(0,0,0,0.3); border:1px solid #1e2a38; height:300px; }
+        .main-image { width:100%; height:100%; object-fit:cover; display:block; }
+        .project-details { flex:1; min-width:300px; }
+        .project-details h2 { font-size:1.8rem; margin-bottom:15px; font-family:'Syne', sans-serif; font-weight:700; color:#00d4ff; }
+        .project-details p { color:#6b7f95; line-height:1.6; margin-bottom:20px; }
+        .tech-stack h3, .project-features h3 { margin-bottom:10px; font-size:1.2rem; font-family:'Syne', sans-serif; color:#e8edf3; }
+        .tech-tags { display:flex; flex-wrap:wrap; gap:10px; }
+        .tech-tag { background-color: rgba(0,212,255,0.08); color:#00d4ff; padding:5px 15px; border-radius:6px; font-size:0.8rem; font-family:'Space Mono', monospace; border:1px solid rgba(0,212,255,0.2); }
+        .features-list { list-style:none; }
+        .features-list li { margin-bottom:8px; padding-left:20px; position:relative; color:#6b7f95; line-height:1.6; }
+        .features-list li::before { content:'\25B9'; color:#00d4ff; font-size:1.2rem; position:absolute; left:0; top:-1px; }
+        .btn { padding:12px 25px; border-radius:8px; text-decoration:none; font-weight:600; font-family:'Space Mono', monospace; font-size:0.8rem; display:inline-flex; align-items:center; gap:8px; }
+        .btn-soon { background: rgba(123,97,255,0.1); color:#7b61ff; border:1px solid rgba(123,97,255,0.3); cursor:default; }
+        .incubation-badge { display:inline-flex; align-items:center; gap:6px; background: rgba(0,255,157,0.08); color:#00ff9d; padding:4px 14px; border-radius:6px; font-size:0.75rem; font-family:'Space Mono', monospace; border:1px solid rgba(0,255,157,0.2); margin-bottom:20px; text-transform:uppercase; }
+        @media (max-width:768px){ .project-content{flex-direction:column;} .main-image-container{height:250px;} .btn{width:100%; justify-content:center;} }
+    </style>
+</head>
+<body>
+    <div class="portfolio-container">
+        <header class="portfolio-header">
+            <h1>Weld AI (ADR)</h1>
+            <p>YOLOv8 + U-Net · Industrial Computer Vision · NDT Inspection</p>
+        </header>
+
+        <div class="project-content">
+            <div class="project-gallery">
+                <div class="main-image-container">
+                    <img src="./assets/images/image.png" alt="Weld AI project" class="main-image">
+                </div>
+            </div>
+
+            <div class="project-details">
+                <h2>Weld AI</h2>
+                <span class="incubation-badge">In Progress — YOLOv8 baseline complete</span>
+                <p>Weld AI is an end-to-end automated defect recognition (ADR) system for radiographic weld inspection. Built on the RIAWELC dataset — 24,000 industrial X-ray images across 4 defect classes (crack, porosity, slag inclusion, and no-defect) — the system replicates and automates the work of a certified NDT inspector using deep learning.</p>
+
+                <div class="project-features">
+                    <h3>Pipeline:</h3>
+                    <ul class="features-list">
+                        <li>X-ray Upload — raw radiographic image input</li>
+                        <li>Preprocessing — noise reduction, contrast normalisation, resizing</li>
+                        <li>YOLOv8 Detection — bounding box localisation of defect regions across 4 classes</li>
+                        <li>U-Net Segmentation — pixel-level mask generation for each detected defect</li>
+                        <li>Pixel-to-mm Calibration — converts pixel measurements to real-world dimensions</li>
+                        <li>ASME Report Generation — structured inspection report output as PDF</li>
+                    </ul>
+                </div>
+
+                <div class="tech-stack">
+                    <h3>Tech Stack:</h3>
+                    <div class="tech-tags">
+                        <span class="tech-tag">YOLOv8 (Ultralytics)</span>
+                        <span class="tech-tag">U-Net (PyTorch)</span>
+                        <span class="tech-tag">FastAPI</span>
+                        <span class="tech-tag">MLflow</span>
+                        <span class="tech-tag">Docker</span>
+                        <span class="tech-tag">DVC</span>
+                        <span class="tech-tag">ONNX</span>
+                    </div>
+                </div>
+
+                <div class="project-features">
+                    <h3>Key Metrics:</h3>
+                    <ul class="features-list">
+                        <li>mAP@0.5: 0.87</li>
+                        <li>F1 Score: 0.93</li>
+                        <li>Inference: &lt;1.8s</li>
+                        <li>Dataset: 24K images</li>
+                    </ul>
+                </div>
+
+                <div class="project-features">
+                    <h3>Status:</h3>
+                    <ul class="features-list">
+                        <li>✅ Dataset structured and versioned (DVC)</li>
+                        <li>✅ YOLOv8 baseline training complete</li>
+                        <li>✅ mAP@0.5 = 0.87, F1 = 0.93 achieved</li>
+                        <li>🔄 U-Net segmentation — in progress</li>
+                        <li>🔄 FastAPI endpoint — in progress</li>
+                        <li>⬜ ASME PDF report generator — planned</li>
+                        <li>⬜ ONNX export and edge deployment — planned</li>
+                    </ul>
+                </div>
+
+                <div class="action-buttons">
+                    <a class="btn btn-soon" href="https://github.com/nishantgawderya1" target="_blank">GitHub</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const container = document.querySelector('.portfolio-container');
+            document.addEventListener('mousemove', (e) => {
+                const xAxis = (window.innerWidth / 2 - e.pageX) / 25;
+                const yAxis = (window.innerHeight / 2 - e.pageY) / 25;
+                container.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+            });
+            container.addEventListener('mouseleave', () => { container.style.transform = 'rotateY(0) rotateX(0)'; });
+        });
+    </script>
+</body>
+</html>
