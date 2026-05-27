@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weld AI — Radiographic Weld Defect Detection</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;font-family:'DM Sans',sans-serif}
+        body{background:#080c10;color:#e8edf3;line-height:1.7;padding:20px}
+        .container{max-width:900px;margin:40px auto;padding:40px;background:#0d1117;border-radius:16px;border:1px solid #1e2a38}
+        h1{font-family:'Syne',sans-serif;font-weight:800;font-size:2rem;background:linear-gradient(to right,#00d4ff,#7b61ff);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:10px}
+        .meta{color:#6b7f95;font-family:'Space Mono',monospace;margin-bottom:18px}
+        .tags{display:flex;gap:8px;margin-bottom:20px}
+        .tag{background:rgba(0,212,255,0.08);color:#00d4ff;padding:4px 12px;border-radius:6px;font-family:'Space Mono',monospace;font-size:0.75rem;border:1px solid rgba(0,212,255,0.18)}
+        .content p{color:#b8c8d8;margin-bottom:14px}
+        .section-title{color:#00d4ff;font-family:'Syne',sans-serif;margin-top:18px;margin-bottom:10px}
+        .features{list-style:none;padding-left:20px}
+        .features li{margin-bottom:8px;color:#b8c8d8}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Weld AI — Radiographic Weld Defect Detection</h1>
+        <div class="meta">Published on May 27, 2026 · 6 min read · by Nishant Gawderya</div>
+        <div class="tags">
+            <span class="tag">Computer Vision</span>
+            <span class="tag">PyTorch</span>
+            <span class="tag">MLflow</span>
+            <span class="tag">Industrial AI</span>
+        </div>
+
+        <div class="content">
+            <p>Weld AI is an end-to-end Automated Defect Recognition (ADR) system designed for radiographic weld inspection using deep learning. Trained on the RIAWELC dataset of 24,000 industrial X-ray images across 4 defect classes, the system combines a YOLOv8 detector with a U-Net segmentation head to both localize and precisely mask defects.</p>
+
+            <h2 class="section-title">Why this matters</h2>
+            <p>Manual radiographic inspection is time-consuming and requires certified inspectors. Automating this process reduces human error, increases throughput, and enables scalable quality assurance across manufacturing sites.</p>
+
+            <h2 class="section-title">Pipeline</h2>
+            <ul class="features">
+                <li>1. X-ray Upload — raw radiographic image input</li>
+                <li>2. Preprocessing — noise reduction, contrast normalization, resizing</li>
+                <li>3. YOLOv8 Detection — bounding box localization of defect regions</li>
+                <li>4. U-Net Segmentation — pixel-level mask generation for detected defects</li>
+                <li>5. Pixel-to-mm Calibration — convert pixel measurements to real-world dimensions</li>
+                <li>6. ASME Report Generation — structured PDF inspection report output</li>
+            </ul>
+
+            <h2 class="section-title">Results</h2>
+            <p>We achieved a YOLOv8 baseline with mAP@0.5 = 0.87 and an F1 score of 0.93. Inference time is under 1.8 seconds on the evaluation hardware. The dataset has been versioned with DVC and training tracked via MLflow.</p>
+
+            <h2 class="section-title">Next steps</h2>
+            <p>Work continues on per-defect U-Net segmentation refinement, FastAPI serving for batch and real-time inference, ONNX export for edge deployment, and automated ASME-compliant PDF report generation.</p>
+
+            <h2 class="section-title">Tech stack</h2>
+            <p>YOLOv8 (Ultralytics), U-Net (PyTorch), MLflow, Docker, DVC, FastAPI, ONNX.</p>
+        </div>
+    </div>
+</body>
+</html>
